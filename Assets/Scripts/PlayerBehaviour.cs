@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerBehaviour : MonoBehaviour {
 
     private Vector3 mousePosition;
-    //private float moveSpeed = 10f;
+    private float moveSpeed = 1.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class PlayerBehaviour : MonoBehaviour {
         mousePosition.z = 5f;
         //mousePosition.y = transform.position.y;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.position = new Vector3(mousePosition.x,transform.position.y,mousePosition.z);
-        //transform.position = Vector3.Lerp(transform.position,mousePosition,moveSpeed*Time.deltaTime);
+        Vector3 newPos = new Vector3(mousePosition.x,transform.position.y,mousePosition.z);
+        transform.position = Vector3.Lerp(transform.position,newPos,moveSpeed*Time.deltaTime);
     }
 }
