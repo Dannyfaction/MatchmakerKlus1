@@ -46,7 +46,7 @@ public class Fartscript : MonoBehaviour {
 
     void RandomSound()
     {
-        int randomNumber = Random.Range(0,5);
+        int randomNumber = Random.Range(0,4);
         fartSounds[randomNumber].Play();
     }
 }

@@ -56,4 +56,14 @@ public class Menu : MonoBehaviour {
             }
         }
     }
+
+    public void PlayLevel()
+    {
+        switch (currentLevel)
+        {
+            default:
+                Application.LoadLevel("Main");
+                break;
+        }
+    }
 }
