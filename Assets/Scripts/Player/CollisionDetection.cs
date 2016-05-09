@@ -4,9 +4,10 @@ using System.Collections;
 public class CollisionDetection : MonoBehaviour {
 
     private float hitDelay;
+    [SerializeField] private PlayerMovement playerScript;
 
 	void Start () {
-	
+
 	}
 	
 	void Update () {
@@ -20,8 +21,7 @@ public class CollisionDetection : MonoBehaviour {
     {
         if (collider.transform.tag != "Player" && hitDelay <= 0)
         {
-            Debug.Log(transform.name + " has been hit!");
-            hitDelay = 1;
+            playerScript.GettingHit();
         }
     }
 }

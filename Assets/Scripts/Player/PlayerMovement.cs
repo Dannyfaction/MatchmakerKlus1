@@ -3,12 +3,17 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     private Vector3 mousePosition;
     private float moveSpeed = 1.5f;
     private Rigidbody rigidbody;
     private bool isJumping;
-    private float counter;
+    private float health = 100;
+    private float hitDelay;
+    private float fallingSpeed;
+    public float FallingSpeed
+    {
+        get { return fallingSpeed; }
+    }
 
     //Change the Mouse Range by changing the field of view on "Player Camera"
 
@@ -19,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        counter -= Time.deltaTime;
+        fallingSpeed = Mathf.Abs(rigidbody.velocity.y);
+        if (hitDelay > 0)
+        {
+            hitDelay -= Time.deltaTime;
+        }
         RotatePlayer();
         mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         mousePosition.z = 1f;
@@ -31,6 +40,23 @@ public class PlayerMovement : MonoBehaviour
 
     void RotatePlayer()
     {
-        //rigidbody.AddTorque(-transform.forward * 35f);
+        rigidbody.AddTorque(-transform.forward * 35f);
+    }
+
+    public void GettingHit()
+    {
+        if (hitDelay <= 0)
+        {
+            if (rigidbody.velocity.y <= -10)
+            {
+                hitDelay = 1f;
+                health -= 10;
+                Debug.Log("auw");
+                if (health <= 0)
+                {
+                    Application.LoadLevel("End");
+                }
+            }
+        }
     }
 }
