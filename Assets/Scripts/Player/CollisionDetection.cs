@@ -4,7 +4,7 @@ using System.Collections;
 public class CollisionDetection : MonoBehaviour {
 
     private float hitDelay;
-    [SerializeField] private PlayerMovement playerScript;
+    [SerializeField] private Player playerScript;
 
 	void Start () {
 
@@ -21,7 +21,15 @@ public class CollisionDetection : MonoBehaviour {
     {
         if (collider.transform.tag != "Player" && hitDelay <= 0)
         {
-            playerScript.GettingHit();
+            if ((transform.name == "Root_M" || transform.name == "Spine1_M (joint)") && collider.transform.name == "Spike")
+            {
+                Debug.Log("Je bent gespiest G");
+                playerScript.GettingImpaled(collider);
+            }
+            else
+            {
+                playerScript.GettingHit();
+            }
         }
     }
 }

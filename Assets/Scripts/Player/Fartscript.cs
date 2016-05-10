@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Fartscript : MonoBehaviour {
+public class Fartscript : SoundPlayer {
 
     private float counter;
     private bool isJumping;
     private float cooldown = 5f;
     private Rigidbody rigidbody;
     [SerializeField] private Image fartImage;
+    [SerializeField] private ParticleSystem fartParticle;
     private AudioSource[] fartSounds;
 
 	void Start () {
@@ -26,10 +27,11 @@ public class Fartscript : MonoBehaviour {
         {
             cooldown += Time.deltaTime;
         }
-        if (Input.GetKeyDown("space") && cooldown >= 5)
+        if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && cooldown >= 5)
         {
             isJumping = true;
-            RandomSound();
+            fartParticle.Play();
+            PlayFart();
             counter = 0.5f;
             cooldown = 0f;
         }
@@ -42,11 +44,5 @@ public class Fartscript : MonoBehaviour {
             rigidbody.velocity = Vector3.zero;
             rigidbody.AddForce(Vector3.up * Time.deltaTime * 50000f);
         }
-    }
-
-    void RandomSound()
-    {
-        int randomNumber = Random.Range(0,4);
-        fartSounds[randomNumber].Play();
     }
 }

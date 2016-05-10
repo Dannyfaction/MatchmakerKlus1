@@ -7,7 +7,8 @@ public class Smasher : MonoBehaviour {
     [SerializeField] private bool mirrored;
     [SerializeField] private float targetZValue;
     private float initialZValue;
-    private float speed = 1.5f;
+    private float forwardSpeed = 7.5f;
+    private float reverseSpeed = 1f;
 
 	void Start () {
         initialZValue = transform.position.z;
@@ -18,7 +19,7 @@ public class Smasher : MonoBehaviour {
         {
             if (targetZValue < transform.position.z && forward)
             {
-                transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+                transform.Translate(-Vector3.forward * Time.deltaTime * forwardSpeed);
                 if (targetZValue >= transform.position.z && forward)
                 {
                     forward = false;
@@ -26,7 +27,7 @@ public class Smasher : MonoBehaviour {
             }
             if (transform.position.z < initialZValue && !forward)
             {
-                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+                transform.Translate(Vector3.forward * Time.deltaTime * reverseSpeed);
                 if (initialZValue <= transform.position.z && !forward)
                 {
                     forward = true;
@@ -37,7 +38,7 @@ public class Smasher : MonoBehaviour {
         {
             if (targetZValue > transform.position.z && forward)
             {
-                transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+                transform.Translate(-Vector3.forward * Time.deltaTime * forwardSpeed);
                 if (targetZValue <= transform.position.z && forward)
                 {
                     forward = false;
@@ -45,7 +46,7 @@ public class Smasher : MonoBehaviour {
             }
             if (transform.position.z > initialZValue && !forward)
             {
-                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+                transform.Translate(Vector3.forward * Time.deltaTime * reverseSpeed);
                 if (initialZValue >= transform.position.z && !forward)
                 {
                     forward = true;

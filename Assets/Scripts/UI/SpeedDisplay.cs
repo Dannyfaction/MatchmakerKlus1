@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SpeedDisplay : MonoBehaviour {
 
     [SerializeField]
-    private PlayerMovement playerScript;
+    private Player playerScript;
     [SerializeField] private Text fallingSpeedText;
     private float fallingSpeed;
 
