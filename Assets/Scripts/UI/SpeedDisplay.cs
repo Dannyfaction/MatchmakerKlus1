@@ -7,7 +7,7 @@ public class SpeedDisplay : MonoBehaviour {
     [SerializeField]
     private Player playerScript;
     [SerializeField] private Text fallingSpeedText;
-    private float fallingSpeed;
+    private double fallingSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,8 @@ public class SpeedDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         fallingSpeed = playerScript.FallingSpeed;
-        fallingSpeed = Mathf.Round(fallingSpeed * 1f) / 1f;
-        fallingSpeedText.text = "Falling Speed: " + fallingSpeed;
+        float floatSpeed = (float)fallingSpeed;
+        fallingSpeed = Mathf.Round(floatSpeed * 1f) / 1f;
+        fallingSpeedText.text = "Falling Speed: " + fallingSpeed + " Km/h";
 	}
 }

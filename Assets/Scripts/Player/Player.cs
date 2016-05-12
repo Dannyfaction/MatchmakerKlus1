@@ -5,10 +5,14 @@ public class Player : SoundPlayer
 {
     private Vector3 mousePosition;
     private float moveSpeed = 1.5f;
-    private Rigidbody rigidbody;
+    private static Rigidbody rigidbody;
     private bool isJumping;
     private float health = 100;
     private bool isImpaled;
+    public bool IsImpaled
+    {
+        get { return isImpaled; }
+    }
     private float impaleCounter;
     private GameObject spike;
     private Vector3 impalePosition;
@@ -17,8 +21,8 @@ public class Player : SoundPlayer
         get { return health; }
     }
     private float hitDelay;
-    private float fallingSpeed;
-    public float FallingSpeed
+    private double fallingSpeed;
+    public double FallingSpeed
     {
         get { return fallingSpeed; }
     }
@@ -28,16 +32,21 @@ public class Player : SoundPlayer
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        CollisionDetection.OnImpaleEvent += GettingImpaled;
+        CollisionDetection.OnDeadEvent += GettingHit;
     }
 
     void Update()
     {
-        impaleCounter -= Time.deltaTime;
-        fallingSpeed = Mathf.Abs(rigidbody.velocity.y);
+        if (impaleCounter > 0)
+        {
+            impaleCounter -= Time.deltaTime;
+        }
         if (hitDelay > 0)
         {
             hitDelay -= Time.deltaTime;
         }
+        fallingSpeed = rigidbody.velocity.magnitude * 3.6;
         RotatePlayer();
         mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         mousePosition.z = 1f;
@@ -61,17 +70,19 @@ public class Player : SoundPlayer
     void RotatePlayer()
     {
         //rigidbody.velocity = Vector3.zero;
-        //rigidbody.AddTorque(-transform.forward * 35f);
+        //rigidbody.AddTorque(-transform.forward * 70f);
     }
 
     public void GettingHit()
     {
+        /*
         if (hitDelay <= 0)
         {
             if (rigidbody.velocity.y <= -10)
             {
                 //Time.timeScale = 0.1f;
                 hitDelay = 1f;
+                slowmotionDelay = 0.1f;
                 health -= 10;
                 if (health <= 0)
                 {
@@ -79,6 +90,7 @@ public class Player : SoundPlayer
                 }
             }
         }
+        */
     }
 
     public void GettingImpaled(Collision collision)
@@ -92,6 +104,8 @@ public class Player : SoundPlayer
         isImpaled = true;
         spike = collision.gameObject;
         rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY |  RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        Rigidbody rootRigidBody = transform.root.GetComponent<Rigidbody>();
+        rootRigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
         Rigidbody[] rigidBodies = GetComponentsInChildren<Rigidbody>();
         for (int i = 0; i < rigidBodies.Length; i++)
         {

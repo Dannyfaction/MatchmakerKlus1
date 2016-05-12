@@ -6,7 +6,7 @@ public class SoundPlayer : MonoBehaviour {
     private AudioSource[] audioSources;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         audioSources = GetComponents<AudioSource>();
     }
 	
@@ -18,14 +18,13 @@ public class SoundPlayer : MonoBehaviour {
     protected void PlayFart()
     {
         int randomNumber = Random.Range(0, 4);
-        Debug.Log(randomNumber);
         audioSources[randomNumber].Play();
     }
 
     protected void PlayScream()
     {
+        audioSources = GetComponents<AudioSource>();
         int randomNumer = Random.Range(4,7);
-        Debug.Log(randomNumer);
         audioSources[randomNumer].Play();
     }
 }
