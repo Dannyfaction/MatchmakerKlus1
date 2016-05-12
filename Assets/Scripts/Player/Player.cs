@@ -113,4 +113,10 @@ public class Player : SoundPlayer
         }
 
     }
+
+    void OnDestroy()
+    {
+        CollisionDetection.OnImpaleEvent -= GettingImpaled;
+        CollisionDetection.OnDeadEvent -= GettingHit;
+    }
 }

@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ParticlePlayer : MonoBehaviour {
+public class ParticlePlayer : MonoBehaviour
+{
 
-    [SerializeField] private ParticleSystem bloodExplosion;
-    [SerializeField] private ParticleSystem bloodBursts;
+    [SerializeField]
+    private ParticleSystem bloodExplosion;
+    [SerializeField]
+    private ParticleSystem bloodBursts;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         CollisionDetection.OnDeadEvent += BloodExplosion;
         CollisionDetection.OnImpaleEvent += BloodBursts;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void BloodExplosion()
     {
@@ -25,5 +30,11 @@ public class ParticlePlayer : MonoBehaviour {
     void BloodBursts(Collision collision)
     {
         bloodBursts.Play();
+    }
+
+    void OnDestroy()
+    {
+        CollisionDetection.OnDeadEvent -= BloodExplosion;
+        CollisionDetection.OnImpaleEvent -= BloodBursts;
     }
 }

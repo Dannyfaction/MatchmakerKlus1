@@ -29,4 +29,10 @@ public class TextDisplay : MonoBehaviour {
         dieText = GameObject.Find("Canvas").transform.Find("DieText").gameObject;
         dieText.SetActive(true);
     }
+
+    void OnDestroy()
+    {
+        CollisionDetection.OnDeadEvent -= ShowDieText;
+        CollisionDetection.OnImpaleEvent -= ShowImpaleText;
+    }
 }

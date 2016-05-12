@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -62,7 +63,8 @@ public class Menu : MonoBehaviour {
         switch (currentLevel)
         {
             default:
-                Application.LoadLevel("Main");
+                //Application.LoadLevel("Main");
+                SceneManager.LoadScene("Main");
                 break;
         }
     }
