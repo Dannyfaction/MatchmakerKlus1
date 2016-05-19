@@ -11,11 +11,13 @@ public class CollisionDetection : MonoBehaviour {
     public static event ImpaleEvent OnImpaleEvent;
 
     private float hitDelay;
-    private float slowmotionDelay;
+    private static bool slowmotionDelay;
     [SerializeField] private Player playerScript;
 
-	void Start () {
+    private static bool isDead;
 
+	void Start () {
+        isDead = false;
 	}
 	
 	void Update () {
@@ -23,39 +25,34 @@ public class CollisionDetection : MonoBehaviour {
         {
             hitDelay -= Time.deltaTime;
         }
-        if (slowmotionDelay > 0)
+        if (slowmotionDelay)
         {
-            slowmotionDelay -= Time.deltaTime;
             Time.timeScale = 0.1f;
             Time.fixedDeltaTime = 0.001f;
+            Invoke("ResetTime",0.15f);
         }
-        /*
-        else
-        {
-            //Time.timeScale = 1f;
-            //Time.fixedDeltaTime = 0.02f;
-        }
-        */
     }
 
     void OnCollisionEnter(Collision collider)
     {
-        if (collider.transform.tag != "Player" && hitDelay <= 0)
+        if (collider.transform.tag != "Player" && hitDelay <= 0 && !isDead)
         {
-            if ((transform.name == "Root_M" || transform.name == "Spine1_M (joint)") && collider.transform.name == "Spike")
+            if ((transform.name == "Hip" || transform.name == "Spine2(joint)") && collider.transform.name == "Spike")
             {
                 //When you get impaled
                 OnImpaleEvent(collider);
                 Debug.Log("Je bent gespiest G");
                 Invoke("RestartLevel", 2f);
+                isDead = true;
             }
-            else if((transform.name == "Root_M" || transform.name == "Spine1_M (joint)") && collider.transform.name != "Spike" && !playerScript.IsImpaled && collider.transform.tag != "Walls")
+            else if((transform.name == "Hip" || transform.name == "Spine2(joint)") && collider.transform.name != "Spike" && !playerScript.IsImpaled && collider.transform.tag != "Walls")
             {
                 //When your torso hits something
                 OnDeadEvent();
                 Debug.Log("Je bent dood G");
-                Invoke("RestartLevel",0.25f);
-                slowmotionDelay = 0.1f;
+                Invoke("RestartLevel",2f);
+                slowmotionDelay = true;
+                isDead = true;
                 //playerScript.GettingHit();
             }
             else
@@ -70,7 +67,14 @@ public class CollisionDetection : MonoBehaviour {
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
         //Application.LoadLevel(Application.loadedLevel);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(Application.loadedLevel);
         //Application.LoadLevel("Menu");
+    }
+
+    void ResetTime()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+        slowmotionDelay = false;
     }
 }

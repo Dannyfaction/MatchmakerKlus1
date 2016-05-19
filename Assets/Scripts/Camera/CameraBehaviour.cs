@@ -19,7 +19,11 @@ public class CameraBehaviour : MonoBehaviour {
         if (transform.name == "Player Camera")
         {
             Vector3 newXZPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, newXZPos, Time.fixedDeltaTime * 0.5f);
+            //if (target.transform.position.x > -2.2f && target.transform.position.x < 2.2f && target.transform.position.z < 3f && target.transform.position.z > -1.7f)
+            //{
+                transform.position = Vector3.Lerp(transform.position, newXZPos, Time.fixedDeltaTime * 2f);
+            //}
+            
         }
     }
 }

@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Player : SoundPlayer
 {
+    public delegate void SpeedLinesEvent();
+    public static event SpeedLinesEvent OnSpeedLinesEvent;
+
+    [SerializeField] private GameObject targetPosition;
     private Vector3 mousePosition;
     private float moveSpeed = 1.5f;
     private static Rigidbody rigidbody;
@@ -16,6 +20,7 @@ public class Player : SoundPlayer
     private float impaleCounter;
     private GameObject spike;
     private Vector3 impalePosition;
+    private bool isPlayingSpeedLines;
     public float Health
     {
         get { return health; }
@@ -38,6 +43,7 @@ public class Player : SoundPlayer
 
     void Update()
     {
+        //KeepHorizontal();
         if (impaleCounter > 0)
         {
             impaleCounter -= Time.deltaTime;
@@ -46,7 +52,18 @@ public class Player : SoundPlayer
         {
             hitDelay -= Time.deltaTime;
         }
-        fallingSpeed = rigidbody.velocity.magnitude * 3.6;
+        if (!isPlayingSpeedLines && fallingSpeed <= -10.5f)
+        {
+            isPlayingSpeedLines = true;
+            OnSpeedLinesEvent();
+        }else if (isPlayingSpeedLines && fallingSpeed > -10.5f)
+        {
+            isPlayingSpeedLines = false;
+            OnSpeedLinesEvent();
+        }
+        //fallingSpeed = rigidbody.velocity.magnitude * 3.6;
+        fallingSpeed = rigidbody.velocity.y;
+        //Debug.Log(fallingSpeed);
         RotatePlayer();
         mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         mousePosition.z = 1f;
@@ -91,6 +108,15 @@ public class Player : SoundPlayer
             }
         }
         */
+    }
+
+    void KeepHorizontal()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 50, Color.green);
+        // Smoothly rotates towards target 
+        var targetPoint = targetPosition.transform.position;
+        var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.down);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
     }
 
     public void GettingImpaled(Collision collision)

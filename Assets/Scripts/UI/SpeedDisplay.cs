@@ -16,9 +16,9 @@ public class SpeedDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        fallingSpeed = playerScript.FallingSpeed;
-        float floatSpeed = (float)fallingSpeed;
-        fallingSpeed = Mathf.Round(floatSpeed * 1f) / 1f;
-        fallingSpeedText.text = "Falling Speed: " + fallingSpeed + " Km/h";
+        //fallingSpeed = playerScript.FallingSpeed;
+        //float floatSpeed = (float)fallingSpeed;
+        //fallingSpeed = Mathf.Round(floatSpeed * 1f) / 1f;
+        //fallingSpeedText.text = "Falling Speed: " + fallingSpeed + " Km/h";
 	}
 }

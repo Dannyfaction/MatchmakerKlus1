@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: 036396e57a7830d42a7ed6ce5b89a2ac
+timeCreated: 1463421058
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Head
+    100002: Head_base
+    100004: Head_top
+    100006: Hip
+    100008: Jaw
+    100010: Jaw_tip
+    100012: joint1
+    100014: joint1 1
+    100016: joint2
+    100018: joint2 1
+    100020: joint2 2
+    100022: joint2 3
+    100024: joint2 4
+    100026: joint2 5
+    100028: joint2 6
+    100030: joint2 7
+    100032: joint2 8
+    100034: joint2 9
+    100036: joint3
+    100038: joint3 1
+    100040: joint3 2
+    100042: joint3 3
+    100044: joint3 4
+    100046: joint3 5
+    100048: joint3 6
+    100050: joint3 7
+    100052: joint3 8
+    100054: joint3 9
+    100056: joint4
+    100058: joint4 1
+    100060: joint4 2
+    100062: joint4 3
+    100064: joint4 4
+    100066: joint4 5
+    100068: joint4 6
+    100070: joint4 7
+    100072: joint4 8
+    100074: joint4 9
+    100076: joint5
+    100078: joint5 1
+    100080: joint6
+    100082: joint6 1
+    100084: joint7
+    100086: joint7 1
+    100088: joint8
+    100090: joint8 1
+    100092: L_ankle
+    100094: L_collarbone
+    100096: L_elbow
+    100098: L_knee
+    100100: L_leg
+    100102: L_LowerArm
+    100104: L_LowerLeg
+    100106: L_shoulder
+    100108: L_toebase
+    100110: L_toetips
+    100112: L_UpperArm
+    100114: L_UpperLeg
+    100116: L_wrist
+    100118: Minion
+    100120: Minion_belt
+    100122: //RootNode
+    100124: Neck
+    100126: R_ankle
+    100128: R_collarbone
+    100130: R_elbow
+    100132: R_knee
+    100134: R_leg
+    100136: R_LowerArm
+    100138: R_LowerLeg
+    100140: R_shoulder
+    100142: R_toebase
+    100144: R_toetips
+    100146: R_UpperArm
+    100148: R_UpperLeg
+    100150: R_wrist
+    100152: Spine1
+    100154: Spine2
+    100156: Spine3
+    100158: Spine4
+    100160: Torso
+    400000: Head
+    400002: Head_base
+    400004: Head_top
+    400006: Hip
+    400008: Jaw
+    400010: Jaw_tip
+    400012: joint1
+    400014: joint1 1
+    400016: joint2
+    400018: joint2 1
+    400020: joint2 2
+    400022: joint2 3
+    400024: joint2 4
+    400026: joint2 5
+    400028: joint2 6
+    400030: joint2 7
+    400032: joint2 8
+    400034: joint2 9
+    400036: joint3
+    400038: joint3 1
+    400040: joint3 2
+    400042: joint3 3
+    400044: joint3 4
+    400046: joint3 5
+    400048: joint3 6
+    400050: joint3 7
+    400052: joint3 8
+    400054: joint3 9
+    400056: joint4
+    400058: joint4 1
+    400060: joint4 2
+    400062: joint4 3
+    400064: joint4 4
+    400066: joint4 5
+    400068: joint4 6
+    400070: joint4 7
+    400072: joint4 8
+    400074: joint4 9
+    400076: joint5
+    400078: joint5 1
+    400080: joint6
+    400082: joint6 1
+    400084: joint7
+    400086: joint7 1
+    400088: joint8
+    400090: joint8 1
+    400092: L_ankle
+    400094: L_collarbone
+    400096: L_elbow
+    400098: L_knee
+    400100: L_leg
+    400102: L_LowerArm
+    400104: L_LowerLeg
+    400106: L_shoulder
+    400108: L_toebase
+    400110: L_toetips
+    400112: L_UpperArm
+    400114: L_UpperLeg
+    400116: L_wrist
+    400118: Minion
+    400120: Minion_belt
+    400122: //RootNode
+    400124: Neck
+    400126: R_ankle
+    400128: R_collarbone
+    400130: R_elbow
+    400132: R_knee
+    400134: R_leg
+    400136: R_LowerArm
+    400138: R_LowerLeg
+    400140: R_shoulder
+    400142: R_toebase
+    400144: R_toetips
+    400146: R_UpperArm
+    400148: R_UpperLeg
+    400150: R_wrist
+    400152: Spine1
+    400154: Spine2
+    400156: Spine3
+    400158: Spine4
+    400160: Torso
+    2300000: Head
+    2300002: L_LowerArm
+    2300004: L_LowerLeg
+    2300006: L_UpperArm
+    2300008: L_UpperLeg
+    2300010: Minion_belt
+    2300012: R_LowerArm
+    2300014: R_LowerLeg
+    2300016: R_UpperArm
+    2300018: R_UpperLeg
+    2300020: Torso
+    3300000: Head
+    3300002: L_LowerArm
+    3300004: L_LowerLeg
+    3300006: L_UpperArm
+    3300008: L_UpperLeg
+    3300010: Minion_belt
+    3300012: R_LowerArm
+    3300014: R_LowerLeg
+    3300016: R_UpperArm
+    3300018: R_UpperLeg
+    3300020: Torso
+    4300000: Minion_belt
+    4300002: L_UpperArm
+    4300004: L_LowerArm
+    4300006: R_UpperArm
+    4300008: R_LowerArm
+    4300010: L_UpperLeg
+    4300012: L_LowerLeg
+    4300014: R_UpperLeg
+    4300016: R_LowerLeg
+    4300018: Head
+    4300020: Torso
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 27.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
