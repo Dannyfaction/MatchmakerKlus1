@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ParticlePlayer : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ParticlePlayer : MonoBehaviour
     private ParticleSystem speedLines;
     [SerializeField]
     private ParticleSystem dustParticle;
+    [SerializeField]
+    private List<ParticleSystem> bodyParticles;
 
     void Start()
     {
@@ -19,6 +22,7 @@ public class ParticlePlayer : MonoBehaviour
         CollisionDetection.OnDeadEvent += Dust;
         CollisionDetection.OnImpaleEvent += BloodBursts;
         Player.OnSpeedLinesEvent += ToggleSpeedLines;
+        BodyDismemberment.OnDismembermentEvent += BodyParticles;
     }
 
     void Update()
@@ -34,6 +38,10 @@ public class ParticlePlayer : MonoBehaviour
     void BloodBursts(Collision collision)
     {
         bloodBursts.Play();
+    }
+
+    void BodyParticles(int bodyPartIndex) {
+        bodyParticles[bodyPartIndex].Play();
     }
 
     void OnDestroy()

@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 public class BodyDismemberment : MonoBehaviour {
 
+    public delegate void DismembermentEvent(int bodyPartIndex);
+    public static event DismembermentEvent OnDismembermentEvent;
+
     [SerializeField]
     private Rigidbody rootRb;
+    [SerializeField]
+    private int bodyPartIndex;
+    
 
     void Start()
     {
@@ -15,6 +21,7 @@ public class BodyDismemberment : MonoBehaviour {
 
     void OnCollisionEnter(Collision col) {
         if (col.transform.tag != transform.tag && rootRb.velocity.y < -5) {
+                OnDismembermentEvent(bodyPartIndex);
                 RemoveFromObject();
         }
     }
