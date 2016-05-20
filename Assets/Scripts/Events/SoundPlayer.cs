@@ -8,12 +8,8 @@ public class SoundPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         audioSources = GetComponents<AudioSource>();
+        CollisionDetection.OnDeadEvent += PlayScream;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     protected void PlayFart()
     {
@@ -24,8 +20,13 @@ public class SoundPlayer : MonoBehaviour {
 
     protected void PlayScream()
     {
-        audioSources = GetComponents<AudioSource>();
+        audioSources = GameObject.Find("Minion_unity").transform.Find("Hip").GetComponents<AudioSource>();
         int randomNumer = Random.Range(4,7);
         audioSources[randomNumer].Play();
+    }
+
+    void OnDestroy()
+    {
+        CollisionDetection.OnDeadEvent -= PlayScream;
     }
 }

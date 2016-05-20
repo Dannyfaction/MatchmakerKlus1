@@ -7,7 +7,12 @@ public class BodyDismemberment : MonoBehaviour {
     [SerializeField]
     private Rigidbody rootRb;
 
-    
+    void Start()
+    {
+        CollisionDetection.OnDeadEvent += RemoveFromObject;
+        CollisionDetection.OnDeadEvent += CloneObject;
+    }
+
     void OnCollisionEnter(Collision col) {
         if (col.transform.tag != transform.tag && rootRb.velocity.y < -5) {
                 RemoveFromObject();
@@ -39,5 +44,11 @@ public class BodyDismemberment : MonoBehaviour {
         clonedObject.AddComponent<Rigidbody>();
         clonedObject.AddComponent<CapsuleCollider>();
         clonedObject.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+    }
+
+    void OnDestroy()
+    {
+        CollisionDetection.OnDeadEvent -= RemoveFromObject;
+        CollisionDetection.OnDeadEvent -= CloneObject;
     }
 }

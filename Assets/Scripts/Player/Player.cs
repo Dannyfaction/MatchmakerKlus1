@@ -38,12 +38,10 @@ public class Player : SoundPlayer
     {
         rigidbody = GetComponent<Rigidbody>();
         CollisionDetection.OnImpaleEvent += GettingImpaled;
-        CollisionDetection.OnDeadEvent += GettingHit;
     }
 
     void Update()
     {
-        //KeepHorizontal();
         if (impaleCounter > 0)
         {
             impaleCounter -= Time.deltaTime;
@@ -87,36 +85,7 @@ public class Player : SoundPlayer
     void RotatePlayer()
     {
         //rigidbody.velocity = Vector3.zero;
-        //rigidbody.AddTorque(-transform.forward * 70f);
-    }
-
-    public void GettingHit()
-    {
-        /*
-        if (hitDelay <= 0)
-        {
-            if (rigidbody.velocity.y <= -10)
-            {
-                //Time.timeScale = 0.1f;
-                hitDelay = 1f;
-                slowmotionDelay = 0.1f;
-                health -= 10;
-                if (health <= 0)
-                {
-                    Application.LoadLevel("End");
-                }
-            }
-        }
-        */
-    }
-
-    void KeepHorizontal()
-    {
-        Debug.DrawRay(transform.position, transform.forward * 50, Color.green);
-        // Smoothly rotates towards target 
-        var targetPoint = targetPosition.transform.position;
-        var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.down);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 1f);
+        rigidbody.AddTorque(-transform.forward * 70f);
     }
 
     public void GettingImpaled(Collision collision)
@@ -143,6 +112,5 @@ public class Player : SoundPlayer
     void OnDestroy()
     {
         CollisionDetection.OnImpaleEvent -= GettingImpaled;
-        CollisionDetection.OnDeadEvent -= GettingHit;
     }
 }

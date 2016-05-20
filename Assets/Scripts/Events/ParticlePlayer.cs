@@ -10,10 +10,13 @@ public class ParticlePlayer : MonoBehaviour
     private ParticleSystem bloodBursts;
     [SerializeField]
     private ParticleSystem speedLines;
+    [SerializeField]
+    private ParticleSystem dustParticle;
 
     void Start()
     {
         CollisionDetection.OnDeadEvent += BloodExplosion;
+        CollisionDetection.OnDeadEvent += Dust;
         CollisionDetection.OnImpaleEvent += BloodBursts;
         Player.OnSpeedLinesEvent += ToggleSpeedLines;
     }
@@ -36,6 +39,7 @@ public class ParticlePlayer : MonoBehaviour
     void OnDestroy()
     {
         CollisionDetection.OnDeadEvent -= BloodExplosion;
+        CollisionDetection.OnDeadEvent -= Dust;
         CollisionDetection.OnImpaleEvent -= BloodBursts;
         Player.OnSpeedLinesEvent -= ToggleSpeedLines;
     }
@@ -50,5 +54,10 @@ public class ParticlePlayer : MonoBehaviour
         {
             speedLines.Play();
         }
+    }
+
+    void Dust()
+    {
+        dustParticle.Play();
     }
 }

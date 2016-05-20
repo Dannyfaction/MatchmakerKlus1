@@ -41,15 +41,13 @@ public class CollisionDetection : MonoBehaviour {
             {
                 //When you get impaled
                 OnImpaleEvent(collider);
-                Debug.Log("Je bent gespiest G");
                 Invoke("RestartLevel", 2f);
                 isDead = true;
             }
-            else if((transform.name == "Hip" || transform.name == "Spine2(joint)") && collider.transform.name != "Spike" && !playerScript.IsImpaled && collider.transform.tag != "Walls")
+            else if((transform.name == "Hip" || transform.name == "Spine2(joint)" || transform.name == "Head_base(joint)") && collider.transform.name != "Spike" && !playerScript.IsImpaled && collider.transform.tag != "Walls")
             {
                 //When your torso hits something
                 OnDeadEvent();
-                Debug.Log("Je bent dood G");
                 Invoke("RestartLevel",2f);
                 slowmotionDelay = true;
                 isDead = true;
