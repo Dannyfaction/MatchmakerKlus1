@@ -33,12 +33,12 @@ public class Menu : MonoBehaviour {
 
     public void ChangeLevelImageUp()
     {
-        if (cooldown <= 0 && currentLevel < 2)
+        if (cooldown <= 0 && currentLevel < 3)
         {
             cooldown = 0.9f;
             newXValue -= 1000;
             currentLevel++;
-            if (currentLevel == 2)
+            if (currentLevel == 3)
             {
                 rightArrow.SetActive(false);
             }
@@ -62,8 +62,14 @@ public class Menu : MonoBehaviour {
     {
         switch (currentLevel)
         {
+            case 2:
+                SceneManager.LoadScene("Level2");
+                break;
+            case 3:
+                SceneManager.LoadScene("Level3");
+                break;
             default:
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene("Level1");
                 break;
         }
     }

@@ -47,8 +47,8 @@ public class CollisionDetection : MonoBehaviour {
             else if((transform.name == "Hip" || transform.name == "Spine2(joint)" || transform.name == "Head_base(joint)") && collider.transform.name != "Spike" && !playerScript.IsImpaled && collider.transform.tag != "Walls")
             {
                 //When your torso hits something
+                Invoke("RestartLevel", 2f);
                 OnDeadEvent();
-                Invoke("RestartLevel",2f);
                 slowmotionDelay = true;
                 isDead = true;
                 //playerScript.GettingHit();
@@ -62,10 +62,8 @@ public class CollisionDetection : MonoBehaviour {
 
     void RestartLevel()
     {
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
         //Application.LoadLevel(Application.loadedLevel);
-        SceneManager.LoadScene(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //Application.LoadLevel("Menu");
     }
 

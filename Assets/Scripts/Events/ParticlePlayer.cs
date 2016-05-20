@@ -50,6 +50,7 @@ public class ParticlePlayer : MonoBehaviour
         CollisionDetection.OnDeadEvent -= Dust;
         CollisionDetection.OnImpaleEvent -= BloodBursts;
         Player.OnSpeedLinesEvent -= ToggleSpeedLines;
+        BodyDismemberment.OnDismembermentEvent -= BodyParticles;
     }
 
     void ToggleSpeedLines()

@@ -36,6 +36,8 @@ public class Player : SoundPlayer
 
     void Start()
     {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
         rigidbody = GetComponent<Rigidbody>();
         CollisionDetection.OnImpaleEvent += GettingImpaled;
     }
